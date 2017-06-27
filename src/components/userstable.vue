@@ -22,7 +22,6 @@
             <td>{{user.city}}</td>
             <td>
               <router-link :to="'/personel/'+user.id" class="waves-effect waves-light btn"><i class="material-icons">mode_edit</i>View</router-link>
-              <router-link :to="'/personel/'+user.id" class="waves-effect red btn"><i class="material-icons">delete</i>Delete</router-link>
             </td>
           </tr>
         </tbody>

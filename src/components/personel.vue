@@ -17,8 +17,9 @@
          </ul>
        </div>
        <div class="card-action">
-         <router-link to='/'>Back</router-link>
-         <router-link :to="'/edituser/'+userData.id">Edit</router-link>
+         <router-link class="btn" to='/'>Back</router-link>
+         <router-link class="btn btn-primary" :to="'/edituser/'+userData.id">Edit</router-link>
+         <button class="btn btn-danger red" v-on:click="deletePersonel(userData.id)">Delete</button>
        </div>
      </div>
    </div>
@@ -42,9 +43,17 @@ export default {
       fetch(`http://slimapp/api/personel/${this.$route.params.id}`)
       .then((res) => { return res.json() })
       .then((data) => { this.userData = data })
+    },
+    deletePersonel (id) {
+      fetch('http://slimapp/api/personel/delete/' + id, {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then((response) => {
+          this.$router.push({ path: '/', query: { alert: 'Personel Deleted' } })
+        })
     }
   }
-
 }
 </script>
 

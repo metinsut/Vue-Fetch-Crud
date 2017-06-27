@@ -1,18 +1,22 @@
 <template>
   <div class="home">
+    <vueAlert v-if="alert" v-bind:message="alert"></vueAlert>
     <userstable :users='users'></userstable>
   </div>
 </template>
 
 <script>
 import userstable from '@/components/userstable'
+import vueAlert from './vueAlert'
+
 export default {
   name: 'home',
-  components: { userstable },
+  components: { userstable, vueAlert },
   data () {
     return {
       msg: 'Welcome to Your Vue.js App',
-      users: []
+      users: [],
+      alert: ''
     }
   },
   created () {
